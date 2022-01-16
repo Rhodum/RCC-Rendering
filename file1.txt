@@ -1,0 +1,5 @@
+function start(placeid, port, baseurl)
+game:GetService("ContentProvider"):SetBaseUrl(baseurl)
+game:GetService("ScriptContext").ScriptsDisabled = true
+local plr = game.Players:CreateLocalPlayer(0)
+plr.CharacterAppearance = "

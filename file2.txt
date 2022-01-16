@@ -1,0 +1,16 @@
+"
+plr:LoadCharacter(false)
+for i,v in pairs(plr.Character:GetChildren()) do
+   print(v)
+   if v:IsA("Tool") then
+       plr.Character.Torso["Right Shoulder"].CurrentAngle = math.pi / 2
+   end
+end
+local HttpService = game:GetService("HttpService")
+local thumbnail = game:GetService("ThumbnailGenerator"):Click("PNG", 1920, 1920, true)
+
+local data = {
+	["png"] = thumbnail;
+}
+
+local username = "

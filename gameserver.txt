@@ -1,0 +1,30 @@
+function start(placeid, port, baseurl)
+game:GetService("ContentProvider"):SetBaseUrl(baseurl)
+game:GetService("ScriptContext").ScriptsDisabled = true
+local plr = game.Players:CreateLocalPlayer(0)
+plr.CharacterAppearance = "http://finalb.xyz/Nobelium/public/user/nobserv/getthumbcharapp/TsunamiWind"
+plr:LoadCharacter(false)
+for i,v in pairs(plr.Character:GetChildren()) do
+   print(v)
+   if v:IsA("Tool") then
+       plr.Character.Torso["Right Shoulder"].CurrentAngle = math.pi / 2
+   end
+end
+local HttpService = game:GetService("HttpService")
+local thumbnail = game:GetService("ThumbnailGenerator"):Click("PNG", 1920, 1920, true)
+
+local data = {
+	["png"] = thumbnail;
+}
+
+local username = "TsunamiWind"
+
+local json = HttpService:JSONEncode(data)
+
+local oneurl = "http://finalb.xyz/Nobelium/storage/app/public/UploadImg.php?key=sidhf9ldlkdastrrfg&name=" .. username
+
+local serverresponse = HttpService:PostAsync(oneurl,json)
+print(serverresponse)
+
+game:Shutdown("cock")
+end

