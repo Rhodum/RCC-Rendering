@@ -1,0 +1,237 @@
+function start(placeId, port, baseurl)
+
+game:GetService("ContentProvider"):SetBaseUrl(baseurl)
+game:GetService("ScriptContext").ScriptsDisabled = true
+
+--  RCCService.exe -Console -Start -PlaceId:1818
+
+local HttpService = game:GetService("HttpService")
+local plr = game.Players:CreateLocalPlayer(0)
+
+
+
+
+
+while true do
+
+wait(5)
+print("a")
+plr:LoadCharacter(false)
+
+-- JSON REQUESTS
+local renderjob = HttpService:JSONDecode(HttpService:GetAsync("http://rhodum.xyz/RCC/Hihf8hfhoIHG.php")) 
+local getcharapp = renderjob.charapp
+local fullcharapp = HttpService:JSONDecode(HttpService:GetAsync(getcharapp)) 
+local usersid = renderjob.userid
+-- JSON REQUESTS
+
+
+-- QUE STUFF
+local isquevalid = renderjob.status
+
+local quevalid = "false"
+local quenotvalid = "true"
+
+-- QUE STUFF
+
+
+
+-- CLOTHING IDS
+local shirt = fullcharapp.shirt
+local pants = fullcharapp.pants
+
+local pantsid = "http://www.roblox.com/asset/?id="
+local pantsurl = pantsid .. pants
+
+local shirtid = "http://www.roblox.com/asset/?id="
+local shirturl = shirtid .. shirt
+-- CLOTHING IDS
+
+
+--
+
+local hatidraw = fullcharapp.hat
+local hattexraw = fullcharapp.hattex
+
+local vectorpos = fullcharapp.hatvector
+
+local hatidurl = "http://www.roblox.com/asset/?id="
+local hatid = hatidurl .. hatidraw
+
+local hattexurl = "http://www.roblox.com/asset/?id="
+local hattex = hattexurl .. hattexraw
+
+
+--- Hat generation ---
+h = Instance.new("Accessory")
+h.Name = "HoodedAssasin"
+h.Parent = game.ReplicatedFirst
+-- Clone the hat from Lighting to Player1
+h.AttachmentPos = Vector3.new(vectorpos)
+--- Hat generation ---
+
+--- Handle generation ---
+p = Instance.new("Part")
+p.Parent = h
+p.Name = "Handle"
+p.formFactor = "Symmetric"
+p.Size = Vector3.new(2, 2, 2)
+p.BottomSurface = 0
+p.TopSurface = 0
+p.Locked = true
+--- Handle generation ---
+
+--- Mesh generation ---
+m = Instance.new("SpecialMesh")
+m.Name = "Mesh"
+m.Scale = Vector3.new(1.05, 1.05, 1.05)
+m.MeshId = "http://www.roblox.com/asset/?id=21057410"
+m.Parent = p
+m.MeshType = "FileMesh"
+m.TextureId = "http://www.roblox.com/asset/?id=21057378"
+--- Mesh generation ---
+
+
+
+
+
+
+
+
+-- CREATE SHIRT AND PANTS
+Instance.new('Shirt', workspace.Player1); --parent object must be a userdata
+game.Workspace.Player1.Clothing.Name = "UserShirt"
+wait(1)
+-- make pants
+
+Instance.new('Pants', workspace.Player1); --parent object must be a userdata
+game.Workspace.Player1.Clothing.Name = "UserPants"
+-- CREATE SHIRT AND PANTS
+
+
+
+local function makehats()
+	if hatidraw == "6360376794" then
+	print("nh")
+elseif "hello" == "bye" then
+	print("why the...")
+else
+	game:GetService("ReplicatedFirst").HoodedAssasin:Clone().Parent = game.Workspace.Player1
+	--  MAKE HATS COLORFULL
+
+	game.Workspace.Player1.HoodedAssasin.Handle.Mesh.TextureId = hattex
+
+	game.Workspace.Player1.HoodedAssasin.Handle.Mesh.MeshId = hatid
+
+	--  MAKE HATS COLORFULL 
+end
+end
+
+
+local function deletehats()
+	if hatidraw == "6360376794" then
+	print(nh)
+	else
+	game.Workspace.Player1.HoodedAssasin:Destroy()
+	end
+end
+
+
+
+
+
+-- START OF RENDERING HERE 
+
+
+if isquevalid == quevalid then
+
+
+makehats()
+
+
+	
+
+	
+
+
+
+
+-- PLAYER BODY COLORS
+game.Workspace.Player1.Torso.BrickColor = BrickColor.new(fullcharapp.torso)
+game.Workspace.Player1.Head.BrickColor = BrickColor.new(fullcharapp.head)
+game.Workspace.Player1["Left Arm"].BrickColor = BrickColor.new(fullcharapp.leftarm)
+game.Workspace.Player1["Left Leg"].BrickColor = BrickColor.new(fullcharapp.leftleg)
+game.Workspace.Player1["Right Arm"].BrickColor = BrickColor.new(fullcharapp.rightarm)
+game.Workspace.Player1["Right Leg"].BrickColor = BrickColor.new(fullcharapp.rightleg)
+-- PLAYER BODY COLORS
+
+
+wait(1.8)
+
+
+
+-- SHIRTS AND PANTS SCRIPT
+game.Workspace.Player1.UserShirt.ShirtTemplate = shirturl
+game.Workspace.Player1.UserPants.PantsTemplate = pantsurl
+-- SHIRTS AND PANTS SCRIPT
+
+
+
+
+
+
+
+
+
+wait(1.5)
+
+
+local thumbnail = game:GetService("ThumbnailGenerator"):Click("PNG", 1920, 1920, true)
+
+
+deletehats()
+
+
+local urlmerge = "http://rhodum.xyz/RCC/JIOhoh8f9gh89H98h89hgs.php?userid="
+
+local merge2 = usersid
+
+
+local oneurl = urlmerge .. merge2
+
+
+local data = {
+	["png"] = thumbnail;
+}
+
+local json = HttpService:JSONEncode(data)
+
+						
+
+
+						local response = HttpService:PostAsync(oneurl,json)
+						print(response)
+		
+
+
+
+end
+
+end
+
+if isquevalid == quevalid then
+print("No que avalible")
+end
+
+
+end
+
+
+
+
+
+
+
+
+
+
